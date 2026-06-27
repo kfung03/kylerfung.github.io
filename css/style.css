@@ -70,3 +70,62 @@ body {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+header {
+  padding: 90px 8%;
+  text-align: center;
+  background: linear-gradient(135deg, #020617, #1e3a8a);
+}
+
+header h1 {
+  font-size: 52px;
+  margin-bottom: 12px;
+}
+
+header p {
+  font-size: 20px;
+  color: #cbd5e1;
+}
+
+section {
+  max-width: 950px;
+  margin: 40px auto;
+  background: #111827;
+  padding: 40px;
+  border-radius: 18px;
+  border: 1px solid #1f2937;
+}
+
+section h2 {
+  color: white;
+  margin-bottom: 18px;
+  font-size: 32px;
+}
+
+section p {
+  color: #cbd5e1;
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.project {
+  background: #1f2937;
+  padding: 24px;
+  border-radius: 14px;
+  margin-top: 20px;
+}
+
+.project h3 {
+  color: #60a5fa;
+}
+
+a {
+  color: #93c5fd;
+}
+
+footer {
+  text-align: center;
+  padding: 35px;
+  color: #94a3b8;
+  background: #020617;
+}
