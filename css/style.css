@@ -88,24 +88,39 @@ header p {
 }
 
 section {
-  max-width: 950px;
-  margin: 40px auto;
+  padding: 90px 10%;
+  max-width: none;
+  margin: 0;
+  background: #0f172a;
+  border-top: 1px solid #334155;
+  border-radius: 0;
+}
+
+section:nth-of-type(even) {
   background: #111827;
-  padding: 40px;
-  border-radius: 18px;
-  border: 1px solid #1f2937;
 }
 
 section h2 {
   color: white;
-  margin-bottom: 18px;
-  font-size: 32px;
+  margin-bottom: 28px;
+  font-size: 36px;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: #3b82f6;
+  margin-top: 12px;
+  border-radius: 4px;
 }
 
 section p {
+  max-width: 850px;
   color: #cbd5e1;
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.8;
 }
 
 .project {
