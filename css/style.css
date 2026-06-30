@@ -5,13 +5,15 @@ body {
   color: white;
 }
 
+/* Navigation */
 .navbar {
   background: #020617;
   padding: 18px 8%;
-  display: flex;over
+  display: flex;
   align-items: center;
   gap: 28px;
   border-bottom: 1px solid #1e293b;
+  overflow: visible;
 }
 
 .logo {
@@ -31,6 +33,7 @@ body {
   background: none;
   border: none;
   cursor: pointer;
+  padding: 8px 0;
 }
 
 .navbar a:hover,
@@ -38,36 +41,36 @@ body {
   color: #60a5fa;
 }
 
+/* Dropdown */
 .dropdown {
   position: relative;
   display: inline-block;
-  padding-bottom: 8px;
 }
 
-nav,
-.navbar,
-.header {
-    overflow: visible;
+.dropbtn {
+  display: inline-block;
 }
 
 .dropdown-content {
   display: none;
   position: absolute;
-  top: calc(100% - 1px);
+  top: 100%;
   left: 0;
-  background: #111827;
+  margin-top: 0;
   min-width: 260px;
+  background: #111827;
   border: 1px solid #1f2937;
   border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  z-index: 1000;
   overflow: hidden;
-  z-index: 100;
 }
 
 .dropdown-content a {
   display: block;
   padding: 14px 18px;
   color: #e5e7eb;
+  text-decoration: none;
 }
 
 .dropdown-content a:hover {
@@ -79,6 +82,7 @@ nav,
   display: block;
 }
 
+/* Header */
 header {
   padding: 90px 8%;
   text-align: center;
@@ -95,13 +99,13 @@ header p {
   color: #cbd5e1;
 }
 
+/* Sections */
 section {
   padding: 90px 10%;
   max-width: none;
   margin: 0;
   background: #0f172a;
   border-top: 1px solid #334155;
-  border-radius: 0;
 }
 
 section:nth-of-type(even) {
@@ -131,6 +135,7 @@ section p {
   line-height: 1.8;
 }
 
+/* Projects */
 .project {
   background: #1f2937;
   padding: 24px;
@@ -143,10 +148,12 @@ section p {
   color: #60a5fa;
 }
 
+/* Links */
 a {
   color: #93c5fd;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 35px;
