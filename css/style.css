@@ -43,6 +43,12 @@ body {
   display: inline-block;
 }
 
+nav,
+.navbar,
+.header {
+    overflow: visible;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
