@@ -8,7 +8,7 @@ body {
 .navbar {
   background: #020617;
   padding: 18px 8%;
-  display: flex;
+  display: flex;over
   align-items: center;
   gap: 28px;
   border-bottom: 1px solid #1e293b;
@@ -41,6 +41,7 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
+  padding-bottom: 8px;
 }
 
 nav,
