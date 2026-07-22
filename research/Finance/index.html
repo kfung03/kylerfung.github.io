@@ -1,1 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Pricing Error Prediction</title>
 
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 950px;
+            margin: 50px auto;
+            padding: 0 25px;
+            line-height: 1.7;
+            background: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            color: #0d47a1;
+            border-bottom: 3px solid #0d47a1;
+            padding-bottom: 10px;
+        }
+
+        h2 {
+            color: #1565c0;
+            margin-top: 40px;
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .abstract {
+            background: white;
+            border-left: 5px solid #1565c0;
+            padding: 20px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+            border-radius: 6px;
+        }
+
+        .section {
+            background: white;
+            padding: 20px;
+            margin-top: 25px;
+            box-shadow: 0px 2px 8px rgba(0,0,0,0.08);
+            border-radius: 6px;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        code {
+            background: #eeeeee;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: gray;
+            font-size: 0.9em;
+        }
+
+        .button {
+            display: inline-block;
+            margin-right: 10px;
+            margin-top: 15px;
+            padding: 10px 18px;
+            background: #1565c0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.2s;
+        }
+
+        .button:hover {
+            background: #0d47a1;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Financial Pricing Error Prediction Using Signature Methods and Volatility Modeling</h1>
+
+<p>
+This project investigates whether modern machine learning techniques can improve the prediction of pricing errors in financial markets by combining traditional asset pricing models with advanced time-series representations.
+</p>
+
+<a class="button" href="notebook/">View Notebooks</a>
+<a class="button" href="https://github.com/kylerfung/kylerfung.github.io">GitHub Repository</a>
+
+<div class="abstract">
+<h2>Abstract</h2>
+
+<p>
+Traditional factor models such as the Fama-French Five-Factor Model explain much of the variation in expected stock returns, yet pricing errors (alphas) remain that may contain predictive information. This project investigates whether machine learning models can better identify these pricing errors by incorporating both sequential market dynamics and volatility information.
+</p>
+
+<p>
+Pricing errors are estimated using the Fama-French Five-Factor model. Financial time series are then transformed into <strong>log-signature features</strong>, which capture higher-order sequential relationships, and combined with <strong>GARCH-based volatility statistics</strong> that model changing market risk. These feature sets are evaluated individually and jointly using Convolutional Neural Networks (CNNs), XGBoost, and ensemble learning methods on both daily and monthly datasets.
+</p>
+
+<p>
+Results indicate that combining signature representations with volatility features provides richer information than traditional factor models alone. The hybrid feature representation consistently improves predictive performance and demonstrates the potential of rough path theory and modern machine learning techniques in quantitative asset pricing.
+</p>
+
+</div>
+
+<div class="section">
+<h2>Research Motivation</h2>
+
+<p>
+Classical asset pricing models explain systematic risk but leave residual pricing errors that may reflect market inefficiencies or omitted information. The primary objective of this research is to determine whether these pricing errors can be predicted using advanced representations of financial time series.
+</p>
+
+<p>
+Rather than relying solely on factor returns, this project incorporates both temporal market structure through log-signature transforms and dynamic volatility estimates through GARCH models.
+</p>
+
+</div>
+
+<div class="section">
+<h2>Methodology</h2>
+
+<ul>
+<li>Estimate pricing errors using the Fama-French Five-Factor Model.</li>
+
+<li>Generate log-signature features from rolling return sequences.</li>
+
+<li>Estimate conditional volatility using GARCH models.</li>
+
+<li>Create three feature sets:
+    <ul>
+        <li>Signature Features</li>
+        <li>GARCH Features</li>
+        <li>Combined Signature + GARCH Features</li>
+    </ul>
+</li>
+
+<li>Train CNN, XGBoost, and ensemble learning models.</li>
+
+<li>Evaluate models using Accuracy, F1 Score, ROC-AUC, and portfolio ranking performance.</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Key Findings</h2>
+
+<ul>
+
+<li>Log-signature features effectively capture nonlinear temporal structure in financial time series.</li>
+
+<li>GARCH volatility statistics contribute meaningful information regarding changing market conditions.</li>
+
+<li>The combined feature representation generally outperforms either feature type alone.</li>
+
+<li>Machine learning models successfully identify pricing error patterns that are difficult to capture using traditional econometric approaches.</li>
+
+<li>The resulting framework shows promise for identifying assets with relatively high expected future returns.</li>
+
+</ul>
+
+</div>
+
+<div class="section">
+
+<h2>Repository Structure</h2>
+
+<pre>
+Finance/
+│
+├── data/
+│   Raw and processed datasets
+│
+├── notebook/
+│   Research notebooks
+│
+└── index.html
+    Project overview
+</pre>
+
+</div>
+
+<div class="section">
+
+<h2>Future Work</h2>
+
+<ul>
+<li>Transformer-based financial forecasting models</li>
+<li>Attention mechanisms for sequential asset pricing</li>
+<li>Alternative volatility models (EGARCH and FIGARCH)</li>
+<li>Portfolio optimization using predicted pricing errors</li>
+<li>Extension to international equity markets</li>
+</ul>
+
+</div>
+
+<footer>
+
+<p>
+Author: <strong>Kyler Fung</strong><br>
+Financial Machine Learning Research Project
+</p>
+
+</footer>
+
+</body>
+</html>
