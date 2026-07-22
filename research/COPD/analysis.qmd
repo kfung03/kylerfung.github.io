@@ -1,0 +1,123 @@
+---
+title: "COPD Phenotype Discovery"
+subtitle: "Unsupervised Random Forest Proximity Clustering in R"
+author: "YOUR NAME"
+format:
+  html:
+    toc: true
+    code-fold: true
+    code-tools: true
+    code-copy: true
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+## Project overview
+
+This analysis investigates whether participants can be separated into distinct COPD-related phenotypes using pulmonary-function, imaging, symptom, and engineered spirometry features. The pipeline uses an unsupervised random forest to construct participant proximities and PAM to form clusters.
+
+## Setup
+
+```{r}
+source("R/00_config.R")
+```
+
+## Load and clean the data
+
+```{r}
+source("R/01_data_cleaning.R")
+```
+
+The source dataset contains participant identifiers, demographic measures, clinical variables, and engineered respiratory features. Identifier fields are excluded from model fitting.
+
+## Missing-data assessment
+
+```{r}
+source("R/02_missing_data.R")
+```
+
+```{r}
+#| label: fig-missingness
+#| fig-cap: "Variables with the greatest percentage of missing values"
+
+head(missingness_summary, 20) |>
+  ggplot(aes(x = reorder(variable, pct_missing), y = pct_missing)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = NULL, y = "Missing values (%)")
+```
+
+## Cluster-number selection
+
+```{r}
+source("R/03_clustering.R")
+```
+
+```{r}
+#| label: fig-silhouette
+#| fig-cap: "Average PAM silhouette width across candidate cluster counts"
+
+silhouette_results |>
+  ggplot(aes(k, average_silhouette_width)) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = silhouette_results$k) +
+  labs(x = "Number of clusters", y = "Average silhouette width")
+```
+
+## Initial clustering results
+
+```{r}
+cluster_counts
+```
+
+```{r}
+#| label: fig-mds
+#| fig-cap: "Two-dimensional representation of random-forest proximity clusters"
+
+mds_plot
+```
+
+## Random-forest imputation
+
+```{r}
+source("R/04_rf_imputation.R")
+```
+
+The initial cluster assignments are used as the response for `rfImpute`, allowing the imputation step to use nonlinear relationships among variables.
+
+## Variable importance
+
+```{r}
+source("R/05_variable_importance.R")
+```
+
+```{r}
+#| label: tbl-importance
+knitr::kable(head(variable_importance, 20), digits = 4)
+```
+
+```{r}
+#| label: fig-importance
+#| fig-cap: "Top variables ranked by random-forest Mean Decrease Accuracy"
+
+head(variable_importance, 20) |>
+  ggplot(aes(x = reorder(variable, mean_decrease_accuracy),
+             y = mean_decrease_accuracy)) +
+  geom_col() +
+  coord_flip() +
+  labs(x = NULL, y = "Mean Decrease Accuracy")
+```
+
+## Cluster comparison
+
+```{r}
+source("R/06_cluster_comparison.R")
+knitr::kable(cluster_comparison, digits = 4)
+```
+
+## Interpretation
+
+The final interpretation should focus on the clinical meaning of the variables that distinguish clusters, the stability of the cluster solution, and whether the identified groups align with known COPD phenotypes. Because this is exploratory unsupervised learning, the clusters should not be interpreted as validated clinical categories without external replication.

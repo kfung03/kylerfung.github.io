@@ -1,0 +1,30 @@
+# R and RStudio
+.Rhistory
+.RData
+.Ruserdata
+.Rproj.user/
+
+# Quarto output/cache
+.quarto/
+_freeze/
+*_cache/
+*_files/
+
+# Private or large research data
+data/*.csv
+data/*.xlsx
+data/*.xls
+!data/README.md
+
+# Generated outputs
+results/*.rds
+results/*.csv
+figures/*.png
+figures/*.pdf
+!figures/.gitkeep
+!results/.gitkeep
+
+# Environment variables and OS files
+.env
+.DS_Store
+Thumbs.db

@@ -1,0 +1,27 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "COPD Phenotype Discovery"
+  navbar:
+    left:
+      - href: analysis.qmd
+        text: Analysis
+    right:
+      - icon: github
+        href: https://github.com/YOUR-USERNAME/copd-phenotype-clustering
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-summary: "Show R code"
+    code-copy: true
+    code-overflow: wrap
+
+execute:
+  warning: false
+  message: false
+  freeze: auto
