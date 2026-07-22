@@ -1,0 +1,32 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "COPD Risk Factor Analysis"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Overview
+      - href: analysis.qmd
+        text: Analysis
+    right:
+      - icon: github
+        href: https://github.com/YOUR-USERNAME/copd-research-project
+  page-footer:
+    center: "COPD Research Portfolio Project"
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-summary: "Show R code"
+    code-copy: true
+    code-tools: true
+    code-overflow: wrap
+
+execute:
+  freeze: auto
+  warning: false
+  message: false

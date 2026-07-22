@@ -1,0 +1,87 @@
+---
+title: "COPD Statistical Analysis"
+format:
+  html:
+    toc: true
+    code-fold: true
+    code-summary: "Show R code"
+    code-copy: true
+execute:
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(broom)
+library(janitor)
+library(here)
+library(scales)
+library(gt)
+
+source(here("R", "01_data_cleaning.R"))
+source(here("R", "02_exploratory_analysis.R"))
+source(here("R", "03_statistical_models.R"))
+source(here("R", "04_visualizations.R"))
+```
+
+## Data Import
+
+The project expects a de-identified CSV file at `data/copd_data.csv`.
+
+```{r}
+#| label: import-data
+
+copd_raw <- read_csv(here("data", "copd_data.csv"), show_col_types = FALSE)
+copd_data <- clean_copd_data(copd_raw)
+```
+
+## Study Population
+
+```{r}
+#| label: participant-summary
+
+participant_summary(copd_data) |>
+  gt()
+```
+
+## COPD Prevalence by Smoking Status
+
+```{r}
+#| label: fig-smoking-prevalence
+#| fig-cap: "COPD prevalence by smoking status"
+
+plot_copd_by_smoking(copd_data)
+```
+
+## COPD Prevalence by Age Group
+
+```{r}
+#| label: fig-age-prevalence
+#| fig-cap: "COPD prevalence by age group"
+
+plot_copd_by_age(copd_data)
+```
+
+## Adjusted Logistic Regression
+
+The primary model estimates the association between COPD and age, sex, smoking status, and body mass index.
+
+```{r}
+#| label: fit-model
+
+copd_model <- fit_copd_model(copd_data)
+
+model_odds_ratios(copd_model) |>
+  gt()
+```
+
+## Interpretation
+
+Replace this section with your findings. Focus on effect size, confidence intervals, practical importance, and study limitations rather than only reporting p-values.
+
+## Limitations
+
+Potential limitations may include missing data, self-reported smoking history, cross-sectional design, residual confounding, sample selection, and limited generalizability.
